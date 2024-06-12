@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <!-- Config -->
+        <meta charset = "utf-8">
+
+        <!-- JS,CSS Style -->
+        <script src="website.js" defer></script>
+        <link href="protocode.css" rel="stylesheet">
+    
+        <!-- Title -->
+        <title>Protocode</title>
+    </head>
+
+    <body>
+        <header>
+            <div class = "container">
+                <h1>Protocode</h1>
+                <h3>We help you finding the protocole you need</h3>
+                <nav>
+                    <a href = "home.html" class = "link">Looking for a protocol</a>
+                    <a href = "upload.html"  class = "link">Upload protocol</a>
+                </nav>
+            </div>
+        </header>
+
+        <!--Questions-->
+        <main>
+            <div class = "container">
+                <form id="info" action = "search.php" method="GET"> <!--"protocole.html">-->
+                    
+                    <div class = "form-group">
+                        <label>Name of your hospital : </label>
+                        <br><br>
+                        <select id="hospital_name" name = "hospital_name"></select>
+                    </div>
+
+                    <div class = "form-group">
+                        <label>Country : </label>
+                        <br><br>
+                        <select id= "country" name = "country"></select> 
+                    </div>
+
+                    <div class = "form-group">
+                        <label>Your job: </label>
+                        <br><br>
+                        <select id="job" name = "job"></select>
+                    </div>
+                    
+                    <div class = "form-group">
+                        <label>Protocol you need : </label>
+                        <input type = "txt" name ="protocole">
+                    </div>
+
+
+                    <input type = "submit" name="submit" class="button" value="Submit"></input>
+                    <!--name = "submit"-->
+                    <!--<input type="submit" value="Search" class="add-boutton"> -->
+                </form> 
+            </div>
+        </main>
+
+    </body>
+
+
+    <footer>
+        <div class="container">
+            Protocode <br>
+            Alexa Brugere - Kwadwo Sarpong - Clemence Le leslé - Romane Garin <br>
+            All content copyright &copy  <br>
+        </div>
+    </footer>
+
+
+
+</html>
