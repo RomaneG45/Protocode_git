@@ -8,7 +8,7 @@ xhr.open('GET', 'website.php');
 
 
 function liste_deroulantes(response){
-    let colonnes=["country","hospital_name","job"];
+    let colonnes=["department","hospital_name","job"];
     for(cat_id=0;cat_id<colonnes.length;cat_id++){
         let ajout="";
         let list_option = [];

@@ -3,51 +3,51 @@
 /*This file takes into account the information from the database and return them as a JSON file 
 to display them in the drop-down menus of the html page.
 Return : JSON file containing the information of the database
-exemple: [["country1","job1","protocole_name1"...], ["country2","job2","protocole_name2"...]]
+exemple: [["department1","job1","protocole_name1"...], ["department2","job2","protocole_name2"...]]
 HTML file : home.html
 JS file : "website.js"*/
 
-// Connexion à la base de données
+// Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = '';
 $dbname = "protocode_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Créer un tableau pour stocker les données
+// Create an array to store data
 $data = array();
 
-// Vérifier la connexion
+// Check connection to the database
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    "Connexion à la base de données réussie."; // Supprimé pour éviter l'affichage dans le JSON
+    "Successful database connection."; 
 }
 
-// Exécuter la requête pour récupérer les données
-$sql = "SELECT country,hospital_name,job FROM info";
+// Execute query to retrieve data
+$sql = "SELECT hospital_name,job,department FROM info";
 $result = $conn->query($sql);
 
 
-// Vérifier si la requête a été exécutée avec succès
+// Check that the request is executed correctly
 if ($result === false) {
-    echo "Erreur lors de l'exécution de la requête SQL : " . $conn->error; // Supprimé pour éviter l'affichage dans le JSON
+    echo "Error executing SQL query : " . $conn->error; 
 } else {
-    // Vérifier si des résultats ont été retournés
+    // Display results if there is
     if ($result->num_rows > 0) {
-        // Boucler sur les résultats et stocker les données dans le tableau
+        // Display results in an array
         while($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
     } else {
-        echo "Aucun résultat trouvé."; // Supprimé pour éviter l'affichage dans le JSON
+        echo "No results found."; 
     }
 }
 
-// Fermer la connexion
+// Close database connection
 $conn->close();
 
-// Retourner les données encodées en JSON
+// Return JSON-encoded data
 echo json_encode($data);
 ?>

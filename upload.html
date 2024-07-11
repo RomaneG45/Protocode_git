@@ -1,28 +1,62 @@
 <!doctype html>
-<html lang="fr">
-    <head>
-        <!-- Config -->
-        <meta charset = "utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Protocode</title>
+    <link rel="stylesheet" href="protocode.css"> <!-- Link to the CSS file-->
+    <script src="upload.js"></script> <!-- Link to the JavaScript file-->
+</head>
 
-        <!-- JS,CSS Style -->
-        <script src="website.js" defer></script>
-        <link href="protocode.css" rel="stylesheet">
-    
-        <!-- Title -->
-        <title>Protocode</title>
-    </head>
+<body>
+    <header type="upload">
+        <div class="container">
+            <h1>Protocode</h1>
+            <h3>We help you finding the protocol you need</h3>
+            <nav>
+                <a href="home.html" class="link">Looking for a protocol</a>
+                <a href="upload.html" class="link">Upload protocol</a>
+            </nav>
+        </div>
+    </header>
 
-    <body>
-        <header>
-            <div class = "container">
-                <h1>Protocode</h1>
-                <h3>We help you finding the protocole you need</h3>
-                <nav>
-                    <a href = "home.html" class = "link">Looking for a protocol</a>
-                    <a href = "upload.html"  class = "link">Upload protocol</a>
-                </nav>
-            </div>
-        </header>
+    <main>
+        <div class="container">
+            <div id="message-container"></div>
 
-    <h1>Work still in progress</h1>
+            <form method="post" action="upload.php" enctype="multipart/form-data">
+                <div class="form_group">
+                    <label for="hospital_name">Hospital Name:</label><br><br>
+                    <input type="txt" name="hospital_name" id="hospital_name" required><br>
+                </div>
+                <div class="form_group">
+                    <label for="department">Department :</label><br><br>
+                    <input type="txt" name="department" id="department" required><br>
+                </div>
+                <div class="form_group">
+                    <label for="job">Job:</label><br><br>
+                    <input type="txt" name="job" id="job" required><br>
+                </div>
+                <div class="form_group">
+                    <label for="protocole_name">Protocole Name:</label><br><br>
+                    <input type="txt" name="protocole_name" id="protocole_name" required><br>
+                </div>
+                <div class="form_group">
+                    <label for="file">Upload PDF:</label><br><br>
+                    <div class="custom-file-input">
+                        <input type="file" name="file" id="file" accept=".pdf" required><br>
+                        <span id="file-label">Choose a file</span>
+                    </div>
+                </div>
+                <input type="submit" value="Upload" class="button_upload">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            Protocode <br>
+            Alexa Brugere - Kwadwo Sarpong - Clemence Le leslé - Romane Garin <br>
+            All content copyright &copy  <br>
+        </div>
+    </footer>
+</body>
 </html>

@@ -18,7 +18,4 @@ else{
     echo "File doesn't exists";
 }
 
-
-
-
 ?>

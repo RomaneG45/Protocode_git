@@ -1,0 +1,15 @@
+{
+    "name": "cleme/protocode_bdd",
+    "description": "project to extract text from pdf files and save them in a database",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cleme\\ProtocodeBdd\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "smalot/pdfparser": "^2.10"
+    }
+}

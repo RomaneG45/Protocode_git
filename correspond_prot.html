@@ -1,45 +1,62 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <!-- Config -->
-        <meta charset = "utf-8">
+<head>
+    <!-- Config -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- JS,CSS Style -->
-        <!--<script src="website.js" defer></script>-->
-        <script src="correspond_prot.js" defer></script>
-        <link href="protocode.css" rel="stylesheet">
-    
-        <!-- Title -->
-        <title>Protocode</title>
-    </head>
+    <!-- JS,CSS Style -->
+    <script src="correspond_prot.js" defer></script><!-- Link to the JavaScript file-->
+    <link href="protocode.css" rel="stylesheet"><!-- Link to the CSS file-->
 
-    <body>
-        <header>
+    <!-- Title -->
+    <title>Protocode</title>
+</head>
+<body>
+    <header>
         <!--Title-->
-            <div class = "container">
-                <h1>Protocode</h1>
-                <h3>We help you finding the protocole you need</h3>
-                <nav>
-                    <a href = "home.html" class = "link">Looking for a protocol</a>
-                    <a href = "upload.html"  class = "link">Upload protocol</a>
-                </nav>
-            </div>
-        </header>
+        <div class="container">
+            <h1>Protocode</h1>
+            <h3>We help you finding the protocole you need</h3>
+            <nav>
+                <a href="home.html" class="link">Looking for a protocol</a>
+                <a href="upload.html" class="link">Upload protocol</a>
+            </nav>
+        </div>
+    </header>
 
-        <main>
-            <h2>Corresponding protocoles:</h1>
-            <div class = "container" id="list_protocole">
+    <main>
+        <br>
+        <div class="container_hide">
+            <br><h2>Corresponding protocoles:</h2><br><br>
+            <img src="up_arrow.png" alt="up_arrow" height="30" width="60" id="up_arrow">
+            <img src="down_arrow.png" alt="down_arrow" height="30" width="60" id="down_arrow" style="display: none;">
+        </div>
 
-                
-            </div>
+        <br>
+        
+        <div id="line" style="display: none;">
+            <hr>
+        </div>
+        
+        <div class="container_list" id="container_list">
+            <form id="list_protocole"></form><br><br>
+        </div>
 
-        </main>
-    </body>
+        <br>
+        
+        <div class="display_protocol" id="display_protocol">
+        </div>
+        
+        <br><br>
+    </main>
 
     <footer>
         <div class="container">
             Protocode <br>
             Alexa Brugere - Kwadwo Sarpong - Clemence Le leslé - Romane Garin <br>
-            All content copyright &copy  <br>
+            All content copyright &copy <br>
         </div>
     </footer>
+</body>
+</html>

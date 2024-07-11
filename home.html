@@ -5,8 +5,8 @@
         <meta charset = "utf-8">
 
         <!-- JS,CSS Style -->
-        <script src="website.js" defer></script>
-        <link href="protocode.css" rel="stylesheet">
+        <script src="website.js" defer></script><!-- Link to the JavaScript file-->
+        <link href="protocode.css" rel="stylesheet"><!-- Link to the CSS file-->
     
         <!-- Title -->
         <title>Protocode</title>
@@ -16,7 +16,7 @@
         <header>
             <div class = "container">
                 <h1>Protocode</h1>
-                <h3>We help you finding the protocole you need</h3>
+                <h3>We help you finding the protocol you need</h3>
                 <nav>
                     <a href = "home.html" class = "link">Looking for a protocol</a>
                     <a href = "upload.html"  class = "link">Upload protocol</a>
@@ -24,38 +24,38 @@
             </div>
         </header>
 
-        <!--Questions-->
+        <!--Parameters of search-->
         <main>
             <div class = "container">
-                <form id="info" action = "search.php" method="GET"> <!--"protocole.html">-->
+                <form id="info" action = "search.php" method="GET"> 
                     
-                    <div class = "form-group">
-                        <label>Name of your hospital : </label>
+                    <div class = "form_group">
+                        <label>Name of your hospital : </label> 
                         <br><br>
                         <select id="hospital_name" name = "hospital_name"></select>
                     </div>
 
-                    <div class = "form-group">
-                        <label>Country : </label>
+                    <div class = "form_group">
+                        <label>Department : </label>
                         <br><br>
-                        <select id= "country" name = "country"></select> 
+                        <select id= "department" name = "department"></select> 
                     </div>
 
-                    <div class = "form-group">
+                    <div class = "form_group">
                         <label>Your job: </label>
                         <br><br>
                         <select id="job" name = "job"></select>
                     </div>
                     
-                    <div class = "form-group">
+                    <div class = "form_group">
                         <label>Protocol you need : </label>
+                        <br><br>
                         <input type = "txt" name ="protocole">
                     </div>
 
 
                     <input type = "submit" name="submit" class="button" value="Submit"></input>
-                    <!--name = "submit"-->
-                    <!--<input type="submit" value="Search" class="add-boutton"> -->
+
                 </form> 
             </div>
         </main>

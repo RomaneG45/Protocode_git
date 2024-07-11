@@ -1,30 +1,71 @@
 <?php
 
-//Ce fichier à pour fonction d'enregistrer les nouveaux protocoles uploadés dans la base de données
+require 'vendor/autoload.php';
 
-// Connexion à la base de données
+use Smalot\PdfParser\Parser;
+
+// Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = '';
 $dbname = "protocode_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Vérifier la connexion
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} else {
-    "Connexion à la base de données réussie."; // Supprimé pour éviter l'affichage dans le JSON
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['file']['tmp_name'];
+        $fileName = $_FILES['file']['name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileType = $_FILES['file']['type'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
 
+        if ($fileExtension == 'pdf') {
+            $uploadFileDir = './uploads/';
+            if (!is_dir($uploadFileDir)) {
+                mkdir($uploadFileDir, 0777, true);
+            }
+            $dest_path = $uploadFileDir . $fileName;
 
-//Idée: récuperer les noms dans le js et le mettre dans un json qui sera lu ligne par ligne (bouclage sur le json) pour récupréer les $variables
-//Pour les protocole image, il faudra mettre l'algorithme dans le js, le php sera le meme pour tous
-$hospital_name=;
-$department=;
-$job=;
-$protocol=;
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $parser = new Parser();
+                $pdf = $parser->parseFile($dest_path);
+                $text = $pdf->getText();
 
-$sql = "INSERT INTO `info`(`country`, `hospital_name`, `job`, `protocole`) VALUES ('$hospital_name','$department','$job','$protocol')";
-$result = $conn->query($sql);
+                // Retrieving text field values
+                $hospital_name = $conn->real_escape_string($_POST['hospital_name']);
+                $department = $conn->real_escape_string($_POST['department']);
+                $job = $conn->real_escape_string($_POST['job']);
+                $protocole_name = $conn->real_escape_string($_POST['protocole_name']);
+                $protocol = $conn->real_escape_string($text);
+
+                // Database insertion
+                $sql = "INSERT INTO info (hospital_name, department, job, protocole_name, protocole) 
+                        VALUES ('$hospital_name', '$department', '$job', '$protocole_name', '$protocol')";
+
+                if ($conn->query($sql) === TRUE) {
+                    $conn->close();
+                    header("Location: upload.html?message=success");
+                    exit();
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+
+                $conn->close();
+            } else {
+                echo "Error moving the uploaded file.";
+            }
+        } else {
+            echo "Only PDF files are allowed.";
+        }
+    } else {
+        echo "No file uploaded or there was an upload error.";
+    }
+}
+?>
