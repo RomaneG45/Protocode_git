@@ -1,3 +1,9 @@
+/* Displays the message "The new protocol has been added successfully." when the pdf is submitted. 
+Updates the file search button with the name of the chosen protocol
+HTML file : "upload.html"
+Php file : "upload.php" */
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const params = new URLSearchParams(window.location.search);
     if (params.has('message') && params.get('message') === 'success') {
@@ -8,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         messageContainer.appendChild(messageParagraph);
     }
 
-    // Code pour changer le label du bouton de fichier
+    // Code to change the file button label
     const fileInput = document.getElementById('file');
     const fileLabel = document.getElementById('file-label');
 

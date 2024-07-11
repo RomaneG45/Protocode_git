@@ -1,5 +1,9 @@
 <?php
-
+/*Recovers the uploaded pdf file and transforms it into text thanks to function from parser library. 
+Stores pdf files in the "upload" file.
+Register the new information from upload.html (job, department, hospital name and the text protocol) into the database
+Returns :   if everything is respected : redirection to "upload.html", with the message "success"
+            otherwise, write the dislpay the problem*/
 require 'vendor/autoload.php';
 
 use Smalot\PdfParser\Parser;
