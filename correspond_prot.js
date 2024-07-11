@@ -8,9 +8,16 @@ xhr.open('GET', 'correspond_prot.php');
 
 function correspond_list(response){
     let ajout = "";
-    for(idx_protocol_suggest=0;idx_protocol_suggest<=response.length;idx_protocol_suggest++){
-        let name_protocole = response[idx_protocol_suggest][0];
-        ajout += "<a href = 'protocole.html' class = 'link'>"+name_protocole+"</a> <br> <br>";
+    for(idx_protocol_suggest=0;idx_protocol_suggest<=response.length-1;idx_protocol_suggest++){
+        let name_protocole = response[idx_protocol_suggest][0].replace(/ /g, "&nbsp;");
+        if(name_protocole != "No&nbsp;results&nbsp;found"){
+            console.log(name_protocole);
+            ajout += "<br> <input type = 'button' class = 'container' style = '' id = "+idx_protocol_suggest+" value = "+ name_protocole +"></input> <br>"
+        }
+        else{
+            ajout += "<p> No result found </p>"
+        }
+        
         document.getElementById("list_protocole").innerHTML = ajout;
     }
 }
